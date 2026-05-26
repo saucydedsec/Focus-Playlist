@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Focus Playlist is a cozy ambient timer for study sessions.">
+    <meta name="theme-color" content="#101318">
+    <title>Focus Playlist</title>
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="theme-midnight">
+    <main class="app">
+      <section class="player" aria-labelledby="appTitle">
+        <div class="hero-copy">
+          <p class="eyebrow">Ambient focus</p>
+          <h1 id="appTitle">Focus Playlist</h1>
+          <p class="lede">Mix cozy sound moods, set a daily goal, and keep a tiny focus history while you study.</p>
+        </div>
+
+        <div class="now-playing" id="nowPlaying">
+          <div class="album-art" id="albumArt" aria-hidden="true">
+            <span></span>
+          </div>
+          <div class="track-meta">
+            <p class="eyebrow">Now playing</p>
+            <h2 id="moodTitle">Rain Room</h2>
+            <p id="moodDescription">Soft rain texture for reading, coding, and deep study.</p>
+          </div>
+        </div>
+
+        <div class="visualizer" id="visualizer" aria-hidden="true"></div>
+
+        <div class="timer" aria-live="polite">
+          <span id="timeDisplay">25:00</span>
+          <small id="sessionLabel">Focus session</small>
+        </div>
+
+        <div class="controls">
+          <button class="primary-button" id="playButton" type="button">Play</button>
+          <button class="secondary-button" id="resetButton" type="button">Reset</button>
+        </div>
+        <p class="shortcut-hint">Space: play/pause | R: reset | 1-5: moods</p>
+
+        <label class="task-field">
+          Focus task
+          <input id="taskInput" type="text" maxlength="70" placeholder="What are you working on?">
+        </label>
+      </section>
+
+      <section class="studio" aria-label="Focus controls">
+        <section class="panel" aria-labelledby="playlistTitle">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Choose a vibe</p>
+              <h2 id="playlistTitle">Sound moods</h2>
+            </div>
+            <span class="pill" id="streakCount">0 sessions</span>
+          </div>
+          <div class="mood-grid" id="moodGrid"></div>
+        </section>
+
+        <section class="panel compact-panel" aria-labelledby="mixTitle">
+          <div>
+            <p class="eyebrow">Sound mixer</p>
+            <h2 id="mixTitle">Blend a second mood</h2>
+          </div>
+          <div class="mix-row">
+            <label>
+              Mix
+              <select id="mixInput"></select>
+            </label>
+            <label>
+              Volume
+              <input id="mixVolumeInput" type="range" min="0" max="100" value="30">
+            </label>
+          </div>
+        </section>
+
+        <section class="panel compact-panel" aria-labelledby="timerTitle">
+          <div>
+            <p class="eyebrow">Timer</p>
+            <h2 id="timerTitle">Session controls</h2>
+          </div>
+          <div class="preset-row" id="presetRow" aria-label="Session presets"></div>
+          <div class="sliders">
+            <label>
+              Volume
+              <input id="volumeInput" type="range" min="0" max="100" value="35">
+            </label>
+            <label>
+              Minutes
+              <input id="minutesInput" type="range" min="5" max="60" step="5" value="25">
+            </label>
+          </div>
+        </section>
+
+        <section class="panel compact-panel" aria-labelledby="goalTitle">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Daily goal</p>
+              <h2 id="goalTitle">Focus progress</h2>
+            </div>
+            <span class="pill" id="goalText">0 / 90 min</span>
+          </div>
+          <div class="progress-track">
+            <span id="goalProgress"></span>
+          </div>
+          <label>
+            Goal minutes
+            <input id="goalInput" type="range" min="30" max="240" step="15" value="90">
+          </label>
+        </section>
+
+        <section class="panel compact-panel" aria-labelledby="themeTitle">
+          <div>
+            <p class="eyebrow">Look and feel</p>
+            <h2 id="themeTitle">Theme switcher</h2>
+          </div>
+          <div class="theme-row" id="themeRow"></div>
+        </section>
+
+        <section class="panel history-panel" aria-labelledby="historyTitle">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Session history</p>
+              <h2 id="historyTitle">Completed focus</h2>
+            </div>
+            <button class="secondary-button small-button" id="exportButton" type="button">Export</button>
+          </div>
+          <ul class="history-list" id="historyList"></ul>
+        </section>
+
+        <section class="panel compact-panel" aria-labelledby="aboutTitle">
+          <div>
+            <p class="eyebrow">About</p>
+            <h2 id="aboutTitle">Built for deep study</h2>
+          </div>
+          <p class="about-copy">
+            Focus Playlist runs fully in your browser, stores progress with local storage, and plays local ambience files from the audio folder.
+          </p>
+          <button class="secondary-button small-button danger-button" id="clearDataButton" type="button">Clear saved data</button>
+        </section>
+      </section>
+    </main>
+
+    <section class="break-screen" id="breakScreen" aria-hidden="true" aria-labelledby="breakTitle">
+      <div class="break-card">
+        <div class="breath-orb" aria-hidden="true"></div>
+        <p class="eyebrow">Break time</p>
+        <h2 id="breakTitle">Breathe for a minute</h2>
+        <p id="breakCountdown">60 seconds</p>
+        <button class="primary-button" id="skipBreakButton" type="button">Skip break</button>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>

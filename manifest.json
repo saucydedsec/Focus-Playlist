@@ -1,0 +1,17 @@
+{
+  "name": "Focus Playlist",
+  "short_name": "Focus",
+  "description": "A cozy ambient study timer with mood mixing, goals, history, and local audio.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#101318",
+  "theme_color": "#101318",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "128x128",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
